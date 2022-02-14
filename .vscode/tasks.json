@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "g++-9",
+            "args": [
+                "-std=gnu++1y",
+                "-g",
+                "-O0",
+                "-I/opt/boost/gcc/include",
+                "-L/opt/boost/gcc/lib",
+                "'${file}'",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
