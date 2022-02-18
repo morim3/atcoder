@@ -1,4 +1,3 @@
-#TODO
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -41,16 +40,28 @@ public:
 	}
 };
 
+ll H, W;
+
+bool suggest_neibor(ll r, ll c, ll dh, ll dw){
+    if(r + dh <= 0 || r + dh > H){
+        return false;
+    }
+    if(c + dw <= 0 || c + dw > W){
+        return false;
+    }
+
+    return true;
+}
 
 UnionFind uf;
 
 signed main(){
     
-    ll H=in();
-    ll W=in();
+    H=in();
+    W=in();
     ll Q=in();
-    bool used[2009][2009];
-    uf.init(H*W);
+    bool used[2009*2009];
+    uf.init(H*W+2009);
 
     ll dir[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
@@ -60,30 +71,24 @@ signed main(){
         ll ty = in();
         if(ty == 1){
             ll r=in(), c=in();
-            ll exist = INF32;
+            ll index = r*W+c;
+            used[index] = true;
             REP(i, 4){
-                ll neibor = uf.root((r+dir[i][0])*H+c+dir[i][1]]);
-                if(neibor < INF32){
-                    state_tree[max(exist, neibor)] = min(exist, neibor);
-                    exist = min(exist, neibor);
+                if(suggest_neibor(r, c, dir[i][0], dir[i][1])){
+                    ll neibor = (r + dir[i][0]) * W + c + dir[i][1];
+                    if(used[neibor]) uf.unite(neibor, index);
+                    
+                    
                 }
+                
             }
-            if(exist<INF32) state[r][c] = exist;
-            else state[r][c] = ++now;
             
-
         }else{
             ll ra=in(), ca=in(), rb=in(), cb=in();
-            ll state_a = state[ra][ca];
-            while(state_tree[state_a]<INF32){
-                state_a = state_tree[state_a];
-            }
-            ll state_b = state[rb][cb];
-            while(state_tree[state_b]<INF32){
-                state_b = state_tree[state_b];
-            }
+            
 
-            if(state_a == state_b){
+
+            if(used[ra*W+ca] && used[rb*W+cb] && uf.same(ra*W+ca, rb*W+cb)){
                 cout << "Yes" << endl;
             }else{
                 cout << "No" << endl;
