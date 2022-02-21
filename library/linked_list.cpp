@@ -1,8 +1,10 @@
+
+template <class T=long long>
 class LinkedList {
 private:
   class Node {
   public:
-    int key;
+    T key;
     Node *prev;
     Node *next;
   };
@@ -10,7 +12,7 @@ private:
   Node *nil;  // 番兵
 
   // keyを持つ最初のノードのポインタを返す
-  Node* list_search(int key) {
+  Node* list_search(T key) {
     Node *current = nil->next;
     while (current != nil && current->key != key) {
       current = current->next;
@@ -35,7 +37,7 @@ public:
   }
 
   // keyを先頭に挿入
-  void insert(int key) {
+  void insert(T key) {
     Node *x;  // 新しいノードをさすポインタ
     x = new Node;
     x->key = key;
@@ -47,7 +49,7 @@ public:
   }  
 
   // keyを持つ最初のノードを削除
-  void delete_key(int key) {
+  void delete_key(T key) {
     delete_node(list_search(key));
   }
 
