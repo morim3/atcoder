@@ -2,7 +2,7 @@
 using namespace std;
 typedef long long ll;
 #define REP(i, n) for(ll i=0; i<(n); ++i)
-#define FOR(i, j, n) for(ll i=(j); i<(n); ++i)
+#define RANGE(i, s, e) for(ll i=(s); i<(e); ++i)
 
 
 #define pb push_back
