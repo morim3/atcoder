@@ -34,6 +34,20 @@ vector<ll> Dijkstra2(graph &G, ll r){
     return dist;
 }
 
+void washal_floid(ll** mat, ll verticle_num){
+    for(ll k=0; k<verticle_num; k++){
+        //1-kの頂点のみを経由したときの距離
+        for(ll i=0; i<verticle_num; i++){
+            for(ll j=0; j< verticle_num; j++){
+                if(mat[i][j] > mat[i][k] + mat[k][j]){
+                    mat[i][j] = mat[i][k] + mat[k][j];
+                }
+            }
+        }
+    }
+
+}
+
 class UnionFind {
 public:
 	vector<ll> par;
