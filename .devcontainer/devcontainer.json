@@ -42,7 +42,8 @@
     "extensions": [
         "ms-vscode.cpptools",
         "austin.code-gnu-global",
-        "vadimcn.vscode-lldb"
+        "vadimcn.vscode-lldb",
+        "asvetliakov.vscode-neovim"
     ],
     "settings": {
       "terminal.integrated.shell.linux": "/bin/bash",

@@ -18,6 +18,11 @@ ENV CPLUS_INCLUDE_PATH /lib/ac-library
 
 RUN pip install online-judge-tools==11.3.0
 
+RUN curl -OL https://github.com/neovim/neovim/releases/download/v0.6.1/nvim-linux64.tar.gz &&\
+    tar xzvf nvim-linux64.tar.gz && mv ./nvim-linux64/bin/nvim /usr/bin/ && rm nvim-linux64.tar.gz
+ENV XDG_CONFIG_HOME /workspace
+
+
 WORKDIR /workspace
 
 # [Optional] Uncomment this section to install additional packages.

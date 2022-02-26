@@ -74,5 +74,7 @@
         "typeinfo": "cpp",
         "valarray": "cpp",
         "variant": "cpp"
-    }
+    },
+    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim"
+
 }
