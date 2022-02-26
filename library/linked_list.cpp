@@ -9,7 +9,6 @@ private:
     Node *next;
   };
   
-  Node *nil;  // 番兵
 
   // keyを持つ最初のノードのポインタを返す
   Node* list_search(T key) {
@@ -46,6 +45,7 @@ public:
     nil->next->prev = x;
     nil->next = x;
     x->prev = nil;
+
   }  
 
   // keyを持つ最初のノードを削除
